@@ -1,4 +1,4 @@
-# miro-react-hooks [![NPM version](https://img.shields.io/npm/v/fastest-validator.svg)](https://www.npmjs.com/package/fastest-validator)
+# miro-react-hooks [![NPM version](https://img.shields.io/npm/v/@mirohq/websdk-types.svg)](https://www.npmjs.com/package/@mirohq/websdk-types)
 
 Collection of [React hooks](https://legacy.reactjs.org/docs/hooks-intro.html) to interact with [Miro Platform WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction).
 
