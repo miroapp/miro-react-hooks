@@ -1,14 +1,12 @@
-import { createContext, FC } from "react";
+import React, { createContext, FC } from "react";
 import { Miro } from "@mirohq/websdk-types";
 
-export type MiroContext = {
+export type MiroContextType = {
   miro: Miro;
 };
 
-export const MiroContext = createContext<MiroContext>();
+export const MiroContext = createContext<MiroContextType>();
 
-export const MiroProvider: FC<MiroContext> = ({ children, miro }) => {
-  return (
-    <MiroContext.Provider value={{ miro }}>{children}</MiroContext.Provider>
-  );
+export const MiroProvider: FC<MiroContextType> = ({ children, miro }) => {
+  return <MiroContext.Provider value={{ miro }}>{children}</MiroContext.Provider>;
 };

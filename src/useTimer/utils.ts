@@ -11,7 +11,7 @@ const timeFactors: Record<TimeUnit, number> = {
 export const convertTime = (
   time: number,
   to: TimeUnit,
-  from: TimeUnit = "milliseconds"
+  from: TimeUnit = "milliseconds",
 ): number => {
   const valueInMilliseconds = time * timeFactors[from];
   const convertedValue = valueInMilliseconds / timeFactors[to];
@@ -22,7 +22,7 @@ export const convertTime = (
 export const formatTime = (value: number, unit: TimeUnit = "milliseconds"): string => {
   const formatter = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
   let formattedValue = value;
-  let formattedUnit = unit;
+  let formattedUnit: Intl.RelativeTimeFormatUnit = "seconds";
 
   const seconds = convertTime(value, "seconds", unit);
 

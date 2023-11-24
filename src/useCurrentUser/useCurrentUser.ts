@@ -13,7 +13,7 @@ export const useCurrentUser = (): UserInfo => {
     };
 
     fetch();
-  }, []);
+  }, [miro.board]);
 
   return userInfo;
 };

@@ -20,7 +20,7 @@ export const useOnlineUsers = () => {
     return () => {
       miro.board.ui.off("online_users:update", fetch);
     };
-  }, []);
+  }, [miro.board]);
 
   return onlineUsers;
 };

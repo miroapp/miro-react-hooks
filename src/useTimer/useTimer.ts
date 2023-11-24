@@ -70,14 +70,14 @@ export const useTimer = (opts: TimerOpts) => {
         opts.onTick?.(restDuration);
       }, tick);
     },
-    [opts.onStart, opts.onTick, stop]
+    [opts, stop, tick],
   );
 
   const handleTimerFinish = useCallback(async () => {
     clearInterval(interval.current);
     setState("ended");
     opts.onStop?.();
-  }, [interval, interval, opts.onStop]);
+  }, [interval, opts]);
 
   const handleTimerUpdate = useCallback(async (event: TimerEvent) => {
     switch (event.timer.status) {
@@ -100,7 +100,7 @@ export const useTimer = (opts: TimerOpts) => {
     };
 
     fetchCurrent();
-  }, []);
+  }, [miro.board.experimental.timer]);
 
   useEffect(() => {
     miro.board.ui.on("experimental:timer:start", handleTimerStart);
@@ -112,7 +112,7 @@ export const useTimer = (opts: TimerOpts) => {
       miro.board.ui.off("experimental:timer:finish", handleTimerFinish);
       miro.board.ui.off("experimental:timer:update", handleTimerUpdate);
     };
-  }, [handleTimerStart, handleTimerFinish, handleTimerUpdate]);
+  }, [miro.board.ui, handleTimerStart, handleTimerFinish, handleTimerUpdate]);
 
   return {
     state,

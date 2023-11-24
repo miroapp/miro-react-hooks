@@ -29,7 +29,7 @@ export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) 
     };
 
     return subscribe();
-  }, []);
+  }, [miro.board.ui, opts?.predicate]);
 
   return items;
 };

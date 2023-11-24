@@ -1,21 +1,19 @@
 module.exports = {
-  extends: ['react-app', 'prettier'],
-  plugins: ['prettier'],
+  extends: ["react-app", "prettier"],
+  plugins: ["prettier"],
   rules: {
-    'prettier/prettier': [
-      'error',
+    "prettier/prettier": [
+      "error",
       {
-        singleQuote: true,
-        trailingComma: 'es5',
         tabWidth: 2,
         printWidth: 100,
         semicolons: true,
-        quoteProps: 'as-needed',
+        quoteProps: "as-needed",
         jsxSingleQuote: false,
         bracketSpacing: true,
         jsxBracketSameLine: true,
-        arrowParens: 'always',
-        endOfLine: 'lf',
+        arrowParens: "always",
+        endOfLine: "lf",
       },
     ],
   },
