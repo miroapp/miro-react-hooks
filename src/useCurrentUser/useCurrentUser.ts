@@ -2,7 +2,7 @@ import { UserInfo } from "@mirohq/websdk-types";
 import { useState, useEffect } from "react";
 import { useMiro } from "../useMiro/useMiro";
 
-export const useCurrentUser = (): UserInfo => {
+export const useCurrentUser = (): UserInfo | undefined => {
   const miro = useMiro();
   const [userInfo, setUserInfo] = useState<UserInfo>();
 
