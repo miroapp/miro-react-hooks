@@ -25,6 +25,7 @@
     "tests",
     "stories",
     "jest.config.ts",
+    "jest.setup.ts",
     "jest.config.*.ts"
   ]
 }

@@ -5,9 +5,19 @@ Collection of [React hooks](https://legacy.reactjs.org/docs/hooks-intro.html) to
 ## Use it!
 
 ```sh
-$ npm install @mirohq/react-hooks
+$ npm install @mirohq/websdk-react-hooks
 // or
-$ yarn add @mirohq/react-hooks
+$ yarn add @mirohq/websdk-react-hooks
+```
+
+### Inject Miro instance
+
+Wrap your components with [MiroProvider]((./src/context.tsx) ) and inject the global instance of Miro WebSDK.
+
+```tsx
+import { MiroProvider } from '@mirohq/websdk-react-hooks'
+
+const App: React.FC = ({ children }) => <MiroProvider miro={window.miro}>{children}</MiroProvider>
 ```
 
 Make sure you have a [Miro application](https://developers.miro.com/docs/build-your-first-hello-world-app) configured to use it: 
