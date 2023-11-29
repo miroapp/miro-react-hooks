@@ -13,12 +13,18 @@ export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) 
 
   useEffect(() => {
     const subscribe = () => {
-      const handleSelectionUpdate = async (event: SelectionUpdateEvent) => {
-        let items = event.items as T[];
+      const setFilteredItems = async (items: Item[]) => {
+        let filteredItems = items as T[];
         if (opts?.predicate) {
-          items = items.filter(opts.predicate);
+          filteredItems = filteredItems.filter(opts.predicate);
         }
-        setItems(items);
+        setItems(filteredItems);
+      };
+
+      miro.board.getSelection().then(setFilteredItems);
+
+      const handleSelectionUpdate = async (event: SelectionUpdateEvent) => {
+        setFilteredItems(event.items);
       };
 
       miro.board.ui.on("selection:update", handleSelectionUpdate);
@@ -29,7 +35,7 @@ export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) 
     };
 
     return subscribe();
-  }, [miro.board.ui, opts?.predicate]);
+  }, [miro.board, miro.board.ui, opts?.predicate]);
 
   return items;
 };
