@@ -1,41 +1,47 @@
-import { Item, SelectionUpdateEvent } from "@mirohq/websdk-types";
-import { useState, useEffect } from "react";
+import { Item } from "@mirohq/websdk-types";
+import { useEffect, useMemo } from "react";
+import { useAsyncAbortable } from "@react-hookz/web";
 
 import { useMiro } from "../useMiro/useMiro";
 
 export type SelectItemsOpts = {
-  predicate?: (items: Item) => boolean;
+  predicate?: (item: Item) => boolean;
 };
 
+/**
+ * Fetches currently selected items on the Miro board and reacts to changes
+ * @returns AsyncState<OnlineUserInfo[]>
+ */
 export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) => {
   const miro = useMiro();
-  const [items, setItems] = useState<T[]>([]);
+  const [state, actions] = useAsyncAbortable(() => miro.board.getSelection(), []);
 
   useEffect(() => {
     const subscribe = () => {
-      const setFilteredItems = async (items: Item[]) => {
-        let filteredItems = items as T[];
-        if (opts?.predicate) {
-          filteredItems = filteredItems.filter(opts.predicate);
-        }
-        setItems(filteredItems);
-      };
+      actions.execute();
 
-      miro.board.getSelection().then(setFilteredItems);
-
-      const handleSelectionUpdate = async (event: SelectionUpdateEvent) => {
-        setFilteredItems(event.items);
-      };
-
-      miro.board.ui.on("selection:update", handleSelectionUpdate);
+      miro.board.ui.on("selection:update", actions.execute);
 
       return () => {
-        miro.board.ui.off("selection:update", handleSelectionUpdate);
+        miro.board.ui.off("selection:update", actions.execute);
       };
     };
 
     return subscribe();
-  }, [miro.board, miro.board.ui, opts?.predicate]);
+  }, [miro.board.ui, actions]);
 
-  return items;
+  const result = useMemo(() => {
+    let filteredItems = state.result as T[];
+    if (opts?.predicate) {
+      return filteredItems.filter(opts.predicate);
+    }
+
+    return filteredItems;
+  }, [state.result, opts?.predicate]);
+
+  return {
+    ...state,
+    ...actions,
+    result,
+  };
 };

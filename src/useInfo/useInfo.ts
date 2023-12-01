@@ -4,11 +4,12 @@ import { useMiro } from "../useMiro/useMiro";
 import { useEffect } from "react";
 
 /**
- * Fetches current user from Miro
+ * Fetches current Miro board info
+ * @returns
  */
-export const useCurrentUser = () => {
+export const useInfo = () => {
   const miro = useMiro();
-  const [state, actions] = useAsyncAbortable(() => miro.board.getUserInfo());
+  const [state, actions] = useAsyncAbortable(() => miro.board.getInfo());
 
   useEffect(() => {
     actions.execute();

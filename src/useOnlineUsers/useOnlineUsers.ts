@@ -1,26 +1,27 @@
-import { OnlineUserInfo } from "@mirohq/websdk-types";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useAsyncAbortable } from "@react-hookz/web";
 
 import { useMiro } from "../useMiro/useMiro";
 
+/**
+ * Fetches list of online users from Miro and reacts to changes
+ */
 export const useOnlineUsers = () => {
   const miro = useMiro();
-  const [onlineUsers, setOnlineUsers] = useState<OnlineUserInfo[]>([]);
+  const [state, actions] = useAsyncAbortable(() => miro.board.getOnlineUsers(), []);
 
   useEffect(() => {
-    const fetch = async () => {
-      const users = await miro.board.getOnlineUsers();
-      setOnlineUsers(users);
-    };
+    miro.board.ui.on("online_users:update", actions.execute);
 
-    miro.board.ui.on("online_users:update", fetch);
-
-    fetch();
+    actions.execute();
 
     return () => {
-      miro.board.ui.off("online_users:update", fetch);
+      miro.board.ui.off("online_users:update", actions.execute);
     };
-  }, [miro.board]);
+  }, [miro.board.ui, actions]);
 
-  return onlineUsers;
+  return {
+    ...state,
+    ...actions,
+  };
 };

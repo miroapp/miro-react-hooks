@@ -14,6 +14,7 @@
   "scripts": {
     "start": "echo ' ===> What is our dev environment?? <==='",
     "test": "jest --maxWorkers 2",
+    "test:ci": "jest --coverage",
     "commit": "cz",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -49,12 +50,15 @@
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
     "@commitlint/cz-commitlint": "^18.4.3",
+    "@golevelup/ts-jest": "^0.4.0",
     "@jest/types": "^29.6.3",
     "@mirohq/websdk-types": "^2.9.10",
     "@testing-library/react": "^14.1.2",
+    "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^29.5.10",
     "commitizen": "^4.3.0",
+    "deepmerge": "^4.3.1",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-react-app": "^7.0.1",
@@ -85,5 +89,7 @@
       "git add"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "@react-hookz/web": "^23.1.0"
+  }
 }
