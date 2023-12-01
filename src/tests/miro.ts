@@ -30,6 +30,13 @@ export const buildMiro = (partial?: PartialFuncReturn<Miro>, options?: MockOptio
           },
           getOnlineUsers: jest.fn(() => Promise.resolve([])),
           getInfo: jest.fn(),
+          viewport: {
+            get: jest.fn(),
+            set: jest.fn(),
+            getZoom: jest.fn(),
+            setZoom: jest.fn(),
+            zoomTo: jest.fn(),
+          },
         },
       },
       partial ?? {},

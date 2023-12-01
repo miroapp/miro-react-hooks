@@ -4,7 +4,7 @@ Collection of [React hooks](https://legacy.reactjs.org/docs/hooks-intro.html) to
 
 ## Use it!
 
-```sh
+```bash
 $ npm install @mirohq/websdk-react-hooks
 // or
 $ yarn add @mirohq/websdk-react-hooks
@@ -26,9 +26,11 @@ Make sure you have a [Miro application](https://developers.miro.com/docs/build-y
 
 - [useMiro](./src/useMiro/useMiro.md) - Access Miro SDK reference.
 - [useCurrentUser](./src/useCurrentUser/useCurrentUser.md) - Get current Miro user.
+- [useInfo](./src/useInfo/useInfo.md) - Fetches Miro board info.
 - [useOnlineUsers](./src/useOnlineUsers/useOnlineUsers.md) - Get online users in a Miro board.
 - [useSelectedItems](./src/useSelectedItems/useSelectedItems.md) - List selected items with possible predicate filter.
 - [useTimer](./src/useTimer/useTimer.md) - Interact with Timer in Miro boards.
+- [useViewport](./src/useViewport/useViewport.md) - Interacts with Miro viewport.
 
 ## Built with
 
