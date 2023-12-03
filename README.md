@@ -12,25 +12,25 @@ $ yarn add @mirohq/websdk-react-hooks
 
 ### Inject Miro instance
 
-Wrap your components with [MiroProvider]((./src/context.tsx) ) and inject the global instance of Miro WebSDK.
+Wrap your components with [MiroProvider](<(./src/context.tsx)>) and inject the global instance of Miro WebSDK.
 
 ```tsx
-import { MiroProvider } from '@mirohq/websdk-react-hooks'
+import { MiroProvider } from "@mirohq/websdk-react-hooks";
 
-const App: React.FC = ({ children }) => <MiroProvider miro={window.miro}>{children}</MiroProvider>
+const App: React.FC = ({ children }) => <MiroProvider miro={window.miro}>{children}</MiroProvider>;
 ```
 
-Make sure you have a [Miro application](https://developers.miro.com/docs/build-your-first-hello-world-app) configured to use it: 
+Make sure you have a [Miro application](https://developers.miro.com/docs/build-your-first-hello-world-app) configured to use it:
 
 ## Hooks
 
-- [useMiro](./src/useMiro/useMiro.md) - Access Miro SDK reference.
-- [useCurrentUser](./src/useCurrentUser/useCurrentUser.md) - Get current Miro user.
-- [useInfo](./src/useInfo/useInfo.md) - Fetches Miro board info.
-- [useOnlineUsers](./src/useOnlineUsers/useOnlineUsers.md) - Get online users in a Miro board.
-- [useSelectedItems](./src/useSelectedItems/useSelectedItems.md) - List selected items with possible predicate filter.
-- [useTimer](./src/useTimer/useTimer.md) - Interact with Timer in Miro boards.
-- [useViewport](./src/useViewport/useViewport.md) - Interacts with Miro viewport.
+- [useMiro](./src/useMiro/useMiro.md) - Access Miro SDK reference from React Context.
+- [useCurrentUser](./src/useCurrentUser/useCurrentUser.md) - Get current [Miro user](https://developers.miro.com/docs/websdk-reference-board#getuserinfo).
+- [useInfo](./src/useInfo/useInfo.md) - Get [Miro board info](https://developers.miro.com/docs/websdk-reference-board#getinfo).
+- [useOnlineUsers](./src/useOnlineUsers/useOnlineUsers.md) - Get [online users](https://developers.miro.com/docs/websdk-reference-board#getonlineusers) in a Miro board.
+- [useSelectedItems](./src/useSelectedItems/useSelectedItems.md) - List [selected items](https://developers.miro.com/docs/websdk-reference-board#getselection) with possible predicate filter.
+- [useStorage](./src/useStorage/useStorage.md) - Interact with [Miro storage](https://developers.miro.com/docs/websdk-reference-storage).
+- [useViewport](./src/useViewport/useViewport.md) - Interact with [Miro viewport](https://developers.miro.com/docs/websdk-reference-viewport).
 
 ## Built with
 

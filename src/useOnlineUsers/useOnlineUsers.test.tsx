@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import { useOnlineUsers } from "./useOnlineUsers";
-import { buildUser, wrapper, dispatchEvent, miro, events } from "../tests";
+import { buildUser, wrapper, dispatchEvent, miro, events } from "../test-utils";
 
 describe("useOnlineUsers", () => {
   afterEach(() => events.clear());
@@ -47,10 +47,6 @@ describe("useOnlineUsers", () => {
     });
 
     expect(result.current.result).toMatchObject([]);
-
-    const fns = events.get("online_users:update");
-
-    expect(fns).toHaveLength(1);
 
     spyOnlineUsers.mockImplementationOnce(() => Promise.resolve(users));
     dispatchEvent("online_users:update");

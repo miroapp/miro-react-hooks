@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import { useSelectedItems } from "./useSelectedItems";
-import { buildItem, buildMiro, wrapper } from "../tests";
+import { buildItem, buildMiro, wrapper } from "../test-utils";
 
 describe("useSelectedItems", () => {
   const shapes = Array.from({ length: 5 }).map((_, id) =>

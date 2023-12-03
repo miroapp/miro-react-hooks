@@ -1,31 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
+    "target": "es6",
+    "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
-    "pretty": true,
-    "rootDir": "src",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noFallthroughCasesInSwitch": true,
     "outDir": "lib",
     "lib": ["es6", "dom", "es2016", "ES2021"]
   },
+  "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules",
     "lib",
     "esm",
-    "tests",
-    "stories",
     "jest.config.ts",
-    "jest.setup.ts",
-    "jest.config.*.ts"
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/test-utils"
   ]
 }

@@ -11,7 +11,6 @@ type SetZoomOpts = Parameters<BoardViewport["setZoom"]>[0];
 
 /**
  * Fetches Miro board viewport and zoom level
- * @returns
  */
 export const useViewport = () => {
   const miro = useMiro();

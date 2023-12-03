@@ -10,7 +10,6 @@ export type SelectItemsOpts = {
 
 /**
  * Fetches currently selected items on the Miro board and reacts to changes
- * @returns AsyncState<OnlineUserInfo[]>
  */
 export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) => {
   const miro = useMiro();
@@ -18,14 +17,14 @@ export const useSelectedItems = <T extends Item = Item>(opts?: SelectItemsOpts) 
 
   useEffect(() => {
     const subscribe = () => {
-      actions.execute();
-
       miro.board.ui.on("selection:update", actions.execute);
 
       return () => {
         miro.board.ui.off("selection:update", actions.execute);
       };
     };
+
+    actions.execute();
 
     return subscribe();
   }, [miro.board.ui, actions]);

@@ -4,6 +4,7 @@ import { MiroProvider } from "../context";
 import { Miro } from "@mirohq/websdk-types";
 
 export * from "./miro";
+export * from "./data";
 
 export const wrapper: FC<PropsWithChildren<{ miro: Miro }>> = ({ children, miro }) => (
   <MiroProvider miro={miro}>{children}</MiroProvider>

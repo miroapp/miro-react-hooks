@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import { useCurrentUser } from "./useCurrentUser";
-import { buildMiro, buildUser, wrapper } from "../tests";
+import { buildMiro, buildUser, wrapper } from "../test-utils";
 
 describe("useCurrentUser", () => {
   it("throws error when Miro SDK instance is not found in the context", () => {
