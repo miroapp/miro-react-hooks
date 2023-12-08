@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useAsyncAbortable } from "@react-hookz/web";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 
 /**
  * Fetches list of online users from Miro and reacts to changes

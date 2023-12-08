@@ -26,6 +26,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "yarn lint --fix",
     "lint:types": "tsc --noEmit",
+    "new-hook": "node ./utils/add-new-hook.mjs",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn clean && concurrently yarn:build:cjs yarn:build:es",
