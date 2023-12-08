@@ -49,8 +49,7 @@ If you are contributing for the first time, we recommend reading this
 3. Fully test your hook, the test filename should use the same hook's name, `./src/myAwesomeHook/myAwesomeHook.text.tsx`
 4. Write docs for your hook.
    - Docs should be colocated with the implementation using the same name for the markdown file, following our previous example, it should be `./src/myAwesomeHook/myAwesomeHook.md`.
-     For example: `src/useFirstMountState/__docs__/story.mdx`.
-   - Write a short example demonstrating your hook in the markdown file.
+   - Write a short example demonstrating your hook in that markdown file.
 5. Add a summary of the hook and a link to the docs to `README.md`.
 6. After all the above steps are done, run `yarn format` to ensure that everything is styled by
    our standards and there are no linting issues.
