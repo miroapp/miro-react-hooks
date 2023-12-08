@@ -1,16 +1,7 @@
-# useViewport
+"use client";
 
-Interact with [Miro viewport](https://developers.miro.com/docs/websdk-reference-viewport).
-
-**Note**: Make sure you are running this code in a configured [Miro WebSDK app](https://developers.miro.com/docs/build-your-first-hello-world-app). 
-
-## Example
-
-
-```tsx
 import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { useViewport, useSelectedItems } from "@mirohq/websdk-react-hooks";
+import { useSelectedItems, useViewport } from "../../../esm";
 
 export const UseViewport: React.FC = () => {
   const { status, result, error, set, zoomTo } = useViewport();
@@ -71,16 +62,3 @@ export const UseViewport: React.FC = () => {
     );
   }
 };
-
-const App = () => {
-    return (
-        <MiroProvider>
-            <UseViewport />
-        </MiroProvider>
-    )
-};
-
-const container = document.getElementById("root")!;
-const root = createRoot(container);
-root.render(<App />);
-```
