@@ -26,7 +26,7 @@
     "build:es": "tsc -m esNext --outDir esm",
     "build": "yarn clean && concurrently yarn:build:cjs yarn:build:es",
     "clean": "rimraf lib esm",
-    "release": "commit-and-tag-version"
+    "release": "commit-and-tag-version --no-verify"
   },
   "husky": {
     "hooks": {
