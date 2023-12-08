@@ -9,9 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+      name: Build
+      uses: ./.github/workflows/test.yml
+      secrets: inherit
+
   bump:
     permissions:
       contents: write
+
     name: Bump version
     runs-on: ubuntu-latest
     steps:
