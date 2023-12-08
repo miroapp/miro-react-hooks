@@ -1,4 +1,4 @@
-type Handler<Args = any> = (...args: Args[]) => unknown;
+export type Handler<Args = any> = (...args: Args[]) => unknown;
 
 export class EventManager<Event extends string = string> {
   private handlers = new Map<Event, Handler[]>();

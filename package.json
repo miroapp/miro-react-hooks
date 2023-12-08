@@ -2,7 +2,7 @@
   "name": "@mirohq/websdk-react-hooks",
   "version": "0.0.1",
   "description": "Collection of React Hooks wrappers for Miro WebSDK",
-  "main": "lib/index.js",
+  "main": "esm/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
   "files": [

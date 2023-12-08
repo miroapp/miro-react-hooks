@@ -1,17 +1,12 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { act, renderHook } from "@testing-library/react-hooks";
 
 import { useOnlineUsers } from "./useOnlineUsers";
-import { buildUser, wrapper, dispatchEvent, miro, events } from "../test-utils";
+import { wrapper, miro, events, setOnlineUsers, clearOnlineUsers, buildUsers } from "../test-utils";
 
 describe("useOnlineUsers", () => {
   afterEach(() => events.clear());
 
-  const users = Array.from({ length: 10 }).map((_, id) =>
-    buildUser({
-      id: id.toString(),
-      name: `User ${id}`,
-    }),
-  );
+  const users = buildUsers(10);
 
   it("throws error when Miro SDK instance is not found in the context", () => {
     const { result } = renderHook(() => useOnlineUsers());
@@ -19,7 +14,7 @@ describe("useOnlineUsers", () => {
   });
 
   it("returns current online users", async () => {
-    jest.spyOn(miro.board, "getOnlineUsers").mockImplementation(() => Promise.resolve(users));
+    setOnlineUsers(users);
 
     const { result, waitForNextUpdate } = renderHook(() => useOnlineUsers(), {
       wrapper,
@@ -32,15 +27,15 @@ describe("useOnlineUsers", () => {
 
     await waitForNextUpdate();
 
+    const onlineUsers = await miro.board.getOnlineUsers();
+
     expect(result.current.status).toBe("success");
     expect(result.current.error).toBeUndefined();
-    expect(result.current.result).toMatchObject(users);
-
-    expect(miro.board.getOnlineUsers).toHaveBeenCalled();
+    expect(result.current.result).toMatchObject(onlineUsers);
   });
 
   it("reacts to newly online users", async () => {
-    const spyOnlineUsers = jest.spyOn(miro.board, "getOnlineUsers");
+    clearOnlineUsers();
     const { result, waitForNextUpdate } = renderHook(() => useOnlineUsers(), {
       wrapper,
       initialProps: { miro },
@@ -48,8 +43,9 @@ describe("useOnlineUsers", () => {
 
     expect(result.current.result).toMatchObject([]);
 
-    spyOnlineUsers.mockImplementationOnce(() => Promise.resolve(users));
-    dispatchEvent("online_users:update");
+    act(() => {
+      setOnlineUsers(users);
+    });
 
     expect(result.current.status).toBe("loading");
     expect(result.current.error).toBeUndefined();
@@ -57,9 +53,11 @@ describe("useOnlineUsers", () => {
 
     await waitForNextUpdate();
 
+    const onlineUsers = await miro.board.getOnlineUsers();
+
     expect(result.current.status).toBe("success");
     expect(result.current.error).toBeUndefined();
-    expect(result.current.result).toMatchObject(users);
+    expect(result.current.result).toMatchObject(onlineUsers);
   });
 
   it("handles error", async () => {

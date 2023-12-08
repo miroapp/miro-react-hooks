@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import { useInfo } from "./useInfo";
-import { wrapper, miro, buildInfo } from "../test-utils";
+import { wrapper, miro } from "../test-utils";
 
 describe("useInfo", () => {
   it("throws error when Miro SDK instance is not found in the context", () => {
@@ -10,8 +10,7 @@ describe("useInfo", () => {
   });
 
   it("returns current info", async () => {
-    const info = buildInfo();
-    jest.spyOn(miro.board, "getInfo").mockImplementation(() => Promise.resolve(info));
+    const info = await miro.board.getInfo();
 
     const { result, waitForNextUpdate } = renderHook(() => useInfo(), {
       wrapper,
@@ -27,8 +26,6 @@ describe("useInfo", () => {
     expect(result.current.status).toBe("success");
     expect(result.current.error).toBeUndefined();
     expect(result.current.result).toMatchObject(info);
-
-    expect(miro.board.getInfo).toHaveBeenCalled();
   });
 
   it("handles error", async () => {

@@ -4,5 +4,6 @@ export * from "./useInfo";
 export * from "./useMiro";
 export * from "./useOnlineUsers";
 export * from "./useSelectedItems";
+export * from "./useSession";
 export * from "./useStorage";
 export * from "./useViewport";

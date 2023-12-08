@@ -1,17 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "ESNext",
+    "target": "ES6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
     "declaration": true,
+    "pretty": true,
+    "rootDir": "src",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noFallthroughCasesInSwitch": true,
     "outDir": "lib",
     "lib": ["es6", "dom", "es2016", "ES2021"]

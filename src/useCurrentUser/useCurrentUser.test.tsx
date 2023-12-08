@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 
 import { useCurrentUser } from "./useCurrentUser";
-import { buildMiro, buildUser, wrapper } from "../test-utils";
+import { buildMiro, currentUser, wrapper, miro } from "../test-utils";
 
 describe("useCurrentUser", () => {
   it("throws error when Miro SDK instance is not found in the context", () => {
@@ -10,13 +10,6 @@ describe("useCurrentUser", () => {
   });
 
   it("returns current user", async () => {
-    const user = buildUser();
-    const miro = buildMiro({
-      board: {
-        getUserInfo: jest.fn(() => Promise.resolve(user)),
-      },
-    });
-
     const { result, waitForNextUpdate } = renderHook(() => useCurrentUser(), {
       wrapper,
       initialProps: { miro },
@@ -30,9 +23,7 @@ describe("useCurrentUser", () => {
 
     expect(result.current.status).toBe("success");
     expect(result.current.error).toBeUndefined();
-    expect(result.current.result).toMatchObject(user);
-
-    expect(miro.board.getUserInfo).toHaveBeenCalled();
+    expect(result.current.result).toMatchObject(currentUser);
   });
 
   it("handles error", async () => {

@@ -23,6 +23,15 @@ export const buildItem = (opts: Partial<Item> = {}): Item => {
   return item;
 };
 
+export const buildUsers = (length: number) => {
+  return Array.from({ length }).map((_, id) =>
+    buildUser({
+      id: id.toString(),
+      name: `User ${id}`,
+    }),
+  );
+};
+
 export const buildInfo = (opts: Partial<BoardInfo> = {}): BoardInfo =>
   merge(
     {
