@@ -1,6 +1,8 @@
-# miro-websdk-react-hooks [![NPM version](https://img.shields.io/npm/v/@mirohq/websdk-types.svg)](https://www.npmjs.com/package/@mirohq/websdk-types)
+# miro-websdk-react-hooks [![NPM version](https://img.shields.io/npm/v/@mirohq/websdk-react-hooks.svg)](https://www.npmjs.com/package/@mirohq/websdk-react-hooks)
 
 Collection of [React hooks](https://legacy.reactjs.org/docs/hooks-intro.html) to interact with [Miro Platform WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction).
+
+Add a bit of :sparkles:reactivity:sparkles: to your Miro app.
 
 ## Use it!
 
@@ -17,10 +19,57 @@ Wrap your components with [MiroProvider](<(https://github.com/miroapp/miro-react
 ```tsx
 import { MiroProvider } from "@mirohq/websdk-react-hooks";
 
-const App: React.FC = ({ children }) => <MiroProvider miro={window.miro}>{children}</MiroProvider>;
+const App: React.FC = ({ children }) => <MiroProvider>{children}</MiroProvider>;
+
+/*
+ You can also optional inject the global Miro WebSDK instance
+ 
+ const App: React.FC = ({ children }) => <MiroProvider miro={window.miro}>{children}</MiroProvider>;
+*/
 ```
 
-Make sure you have a [Miro application](https://developers.miro.com/docs/build-your-first-hello-world-app) configured to use it:
+Make sure you have a [Miro application](https://developers.miro.com/docs/build-your-first-hello-world-app) configured to use it. The hooks in this library will only work within Miro boards and in a well-configured app.
+
+### Isomorphic or not?
+
+The [Miro WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction) is **NOT** isomorphic, meaning that you cannot use it in both server and client environments. This also applies to this library, it won't work you are rendereing your React components in the server.
+
+### What if I am using Nextjs?
+
+Well, in that case, you can wrap your component in a dynamic code block that will defer the component rendering to only execute in the client-side:
+
+```tsx
+import dynamic from "next/dynamic";
+import React from "react";
+import { useCurrentUser } from "@mirohq/websdk-react-hooks";
+
+const NoSsr: React.FC<React.PropsWithChildren> = (props) => (
+  <React.Fragment>{props.children}</React.Fragment>
+);
+
+const NoSSRWrapper = dynamic(() => Promise.resolve(NoSsr), {
+  ssr: false,
+});
+
+// And in your Nextjs page
+
+const Component: React.FC = () => {
+    const { status, result, error } = useCurrentUser();
+
+    if (status === "success") {
+        return <p>The current user is "{result?.name}"</p>;
+    }
+}
+
+export default function OnlyInTheClient() {
+  return (
+    <NoSSRWrapper>
+      <Group />
+    </NoSSRWrapper>
+  );
+}
+
+```
 
 ## Hooks
 
@@ -38,8 +87,10 @@ Make sure you have a [Miro application](https://developers.miro.com/docs/build-y
 - [Miro Platform WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction)
 - [React](https://react.dev/)
 - [Typescript](https://www.typescriptlang.org/)
+- [React Hookz Web](https://react-hookz.github.io/web/)
 - [Jest](https://jestjs.io/)
 - [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
+- [React Hooks Testing Library](https://github.com/testing-library/react-hooks-testing-library)
 
 ## Contributing
 
