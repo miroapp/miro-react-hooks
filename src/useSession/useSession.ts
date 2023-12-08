@@ -7,7 +7,7 @@ import {
   UserSessionEvent,
 } from "@mirohq/websdk-types";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 import { useOnlineUsers } from "../useOnlineUsers";
 
 type SessionState = "idle" | "started" | "ended";

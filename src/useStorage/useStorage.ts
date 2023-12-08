@@ -2,7 +2,7 @@ import { useAsyncAbortable } from "@react-hookz/web";
 import { useCallback, useEffect, useMemo } from "react";
 import { Json } from "@mirohq/websdk-types";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 
 /**
  * Interacts with Miro storage

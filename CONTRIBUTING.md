@@ -53,6 +53,7 @@ If you are contributing for the first time, we recommend reading this
 5. Add a summary of the hook and a link to the docs to `README.md`.
 6. After all the above steps are done, run `yarn format` to ensure that everything is styled by
    our standards and there are no linting issues.
+7. `yarn new-hook myAwesomeHook` will help you to create a proper file structure for the new hook.
 
 ## Committing
 

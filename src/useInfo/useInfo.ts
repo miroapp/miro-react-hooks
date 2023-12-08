@@ -1,6 +1,6 @@
 import { useAsyncAbortable, useMountEffect } from "@react-hookz/web";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 
 /**
  * Fetches current Miro board info

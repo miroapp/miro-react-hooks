@@ -71,17 +71,6 @@ export default function OnlyInTheClient() {
 
 ```
 
-## Hooks
-
-- [useMiro](https://github.com/miroapp/miro-react-hooks/tree/main/src/useMiro/useMiro.md) - Access Miro SDK reference from React Context.
-- [useCurrentUser](https://github.com/miroapp/miro-react-hooks/tree/main/src/useCurrentUser/useCurrentUser.md) - Get current [Miro user](https://developers.miro.com/docs/websdk-reference-board#getuserinfo).
-- [useInfo](https://github.com/miroapp/miro-react-hooks/tree/main/src/useInfo/useInfo.md) - Get [Miro board info](https://developers.miro.com/docs/websdk-reference-board#getinfo).
-- [useOnlineUsers](https://github.com/miroapp/miro-react-hooks/tree/main/src/useOnlineUsers/useOnlineUsers.md) - Get [online users](https://developers.miro.com/docs/websdk-reference-board#getonlineusers) in a Miro board.
-- [useSelectedItems](https://github.com/miroapp/miro-react-hooks/tree/main/src/useSelectedItems/useSelectedItems.md) - List [selected items](https://developers.miro.com/docs/websdk-reference-board#getselection) with possible predicate filter.
-- [useSession](https://github.com/miroapp/miro-react-hooks/tree/main/src/useSession/useSession.md) - Interact with [Miro session](https://developers.miro.com/docs/websdk-reference-session).
-- [useStorage](https://github.com/miroapp/miro-react-hooks/tree/main/src/useStorage/useStorage.md) - Interact with [Miro storage](https://developers.miro.com/docs/websdk-reference-storage).
-- [useViewport](https://github.com/miroapp/miro-react-hooks/tree/main/src/useViewport/useViewport.md) - Interact with [Miro viewport](https://developers.miro.com/docs/websdk-reference-viewport).
-
 ## Built with
 
 - [Miro Platform WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction)
@@ -92,6 +81,20 @@ export default function OnlyInTheClient() {
 - [React testing library](https://testing-library.com/docs/react-testing-library/intro/)
 - [React Hooks Testing Library](https://github.com/testing-library/react-hooks-testing-library)
 
+> This library is heavily inspired on https://github.com/react-hookz/web. Pure :sparkling_heart: awesomeness :sparkling_heart:.
+
 ## Contributing
 
 Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) guide to get started.
+
+
+## Hooks
+
+- [useMiro](https://github.com/miroapp/miro-react-hooks/tree/main/src/useMiro.md) - Access Miro SDK reference from React Context.
+- [useCurrentUser](https://github.com/miroapp/miro-react-hooks/tree/main/src/useCurrentUser/useCurrentUser.md) - Get current [Miro user](https://developers.miro.com/docs/websdk-reference-board#getuserinfo).
+- [useInfo](https://github.com/miroapp/miro-react-hooks/tree/main/src/useInfo/useInfo.md) - Get [Miro board info](https://developers.miro.com/docs/websdk-reference-board#getinfo).
+- [useOnlineUsers](https://github.com/miroapp/miro-react-hooks/tree/main/src/useOnlineUsers/useOnlineUsers.md) - Get [online users](https://developers.miro.com/docs/websdk-reference-board#getonlineusers) in a Miro board.
+- [useSelectedItems](https://github.com/miroapp/miro-react-hooks/tree/main/src/useSelectedItems/useSelectedItems.md) - List [selected items](https://developers.miro.com/docs/websdk-reference-board#getselection) with possible predicate filter.
+- [useSession](https://github.com/miroapp/miro-react-hooks/tree/main/src/useSession/useSession.md) - Interact with [Miro session](https://developers.miro.com/docs/websdk-reference-session).
+- [useStorage](https://github.com/miroapp/miro-react-hooks/tree/main/src/useStorage/useStorage.md) - Interact with [Miro storage](https://developers.miro.com/docs/websdk-reference-storage).
+- [useViewport](https://github.com/miroapp/miro-react-hooks/tree/main/src/useViewport/useViewport.md) - Interact with [Miro viewport](https://developers.miro.com/docs/websdk-reference-viewport).

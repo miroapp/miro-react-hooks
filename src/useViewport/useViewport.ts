@@ -1,6 +1,6 @@
 import { useAsyncAbortable } from "@react-hookz/web";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 import { useCallback, useEffect } from "react";
 import { BoardViewport } from "@mirohq/websdk-types";
 

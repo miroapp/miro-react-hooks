@@ -2,7 +2,7 @@ import { Item } from "@mirohq/websdk-types";
 import { useEffect, useMemo } from "react";
 import { useAsyncAbortable } from "@react-hookz/web";
 
-import { useMiro } from "../useMiro/useMiro";
+import { useMiro } from "../useMiro";
 
 export type SelectItemsOpts = {
   predicate?: (item: Item) => boolean;
