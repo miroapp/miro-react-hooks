@@ -1,16 +1,7 @@
-# useStorage
+"use client";
 
-Interact with [Miro storage](https://developers.miro.com/docs/websdk-reference-storage).
-
-**Note**: Make sure you are running this code in a configured [Miro WebSDK app](https://developers.miro.com/docs/build-your-first-hello-world-app). 
-
-## Example
-
-
-```tsx
 import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { useStorage } from "@mirohq/websdk-react-hooks";
+import { useStorage } from "../../../esm";
 
 export const UseStorage: React.FC = () => {
   const { status, result, error, set, remove } = useStorage("react-hooks", "example");
@@ -44,16 +35,3 @@ export const UseStorage: React.FC = () => {
     );
   }
 };
-
-const App = () => {
-    return (
-        <MiroProvider>
-            <UseSelectedItems />
-        </MiroProvider>
-    )
-};
-
-const container = document.getElementById("root")!;
-const root = createRoot(container);
-root.render(<App />);
-```
