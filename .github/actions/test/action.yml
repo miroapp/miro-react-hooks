@@ -1,0 +1,13 @@
+name: "Build and test"
+runs:
+  using: "composite"
+  steps:
+    - name: Setup
+      uses: ./.github/actions/setup
+      with:
+        fetch-depth: 1
+
+    - name: Test
+      run: yarn test:ci
+
+      
