@@ -12,10 +12,14 @@ jobs:
   bump:
     permissions:
       contents: write
+
     name: Bump version
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/test.yml
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/test
 
       - name: Generate tag
         run: |
