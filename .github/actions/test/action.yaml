@@ -1,4 +1,5 @@
 name: "Build and test"
+description: Setup repo and run tests
 runs:
   using: "composite"
   steps:
@@ -8,6 +9,7 @@ runs:
         fetch-depth: 1
 
     - name: Test
+      shell: bash
       run: yarn test:ci
 
       

@@ -1,4 +1,5 @@
 name: "Setup"
+description: Setup repo
 runs:
   using: "composite"
   steps:
@@ -13,9 +14,11 @@ runs:
         node-version: 18.x
 
     - name: Install dependencies
+      shell: bash
       run: yarn install --frozen-lockfile
 
     - name: Build
+      shell: bash
       run: yarn build
 
       
