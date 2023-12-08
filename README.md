@@ -29,6 +29,7 @@ Make sure you have a [Miro application](https://developers.miro.com/docs/build-y
 - [useInfo](./src/useInfo/useInfo.md) - Get [Miro board info](https://developers.miro.com/docs/websdk-reference-board#getinfo).
 - [useOnlineUsers](./src/useOnlineUsers/useOnlineUsers.md) - Get [online users](https://developers.miro.com/docs/websdk-reference-board#getonlineusers) in a Miro board.
 - [useSelectedItems](./src/useSelectedItems/useSelectedItems.md) - List [selected items](https://developers.miro.com/docs/websdk-reference-board#getselection) with possible predicate filter.
+- [useSession](./src/useSession/useSession.md) - Interact with [Miro session](https://developers.miro.com/docs/websdk-reference-session).
 - [useStorage](./src/useStorage/useStorage.md) - Interact with [Miro storage](https://developers.miro.com/docs/websdk-reference-storage).
 - [useViewport](./src/useViewport/useViewport.md) - Interact with [Miro viewport](https://developers.miro.com/docs/websdk-reference-viewport).
 

@@ -1,0 +1,28 @@
+name: Bump version
+
+on:
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  bump:
+    permissions:
+      contents: write
+    name: Bump version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/test.yml
+
+      - name: Generate tag
+        run: |
+          git config user.name Automated release
+          git config user.email websdk-react-hooks@miro.com
+          yarn release
+
+      - name: Publish tag
+        id: publish_tag
+        run: git push --follow-tags

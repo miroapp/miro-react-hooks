@@ -8,5 +8,6 @@ export type MiroContextType = {
 export const MiroContext = createContext<MiroContextType>({});
 
 export const MiroProvider: FC<PropsWithChildren<MiroContextType>> = ({ children, miro }) => {
-  return <MiroContext.Provider value={{ miro }}>{children}</MiroContext.Provider>;
+  const miroInstance = miro ?? globalThis.miro;
+  return <MiroContext.Provider value={{ miro: miroInstance }}>{children}</MiroContext.Provider>;
 };
