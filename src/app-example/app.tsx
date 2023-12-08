@@ -5,45 +5,9 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { MiroProvider } from "../../esm";
+import { routes } from "./routes";
 
-import { UseCurrentUser } from "./pages/UserCurrentUser";
-import { Index } from "./pages/Index";
-import { Miro } from "./pages/UseMiro";
-import { UseInfo } from "./pages/UseInfo";
-import { UseOnlineUsers } from "./pages/UseOnlineUsers";
-import { UseSelectedItems } from "./pages/UseSelectedItems";
-import { UseViewport } from "./pages/UseViewport";
-
-const router = createBrowserRouter([
-  {
-    path: "/app.html",
-    element: <Index />,
-  },
-  {
-    path: "/miro",
-    element: <Miro />,
-  },
-  {
-    path: "/use-current-user",
-    element: <UseCurrentUser />,
-  },
-  {
-    path: "/use-info",
-    element: <UseInfo />,
-  },
-  {
-    path: "/use-online-users",
-    element: <UseOnlineUsers />,
-  },
-  {
-    path: "/use-selected-items",
-    element: <UseSelectedItems />,
-  },
-  {
-    path: "/use-viewport",
-    element: <UseViewport />,
-  },
-]);
+const router = createBrowserRouter(routes);
 
 const App = () => {
   return (

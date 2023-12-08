@@ -44,7 +44,7 @@ export const UseViewport: React.FC = () => {
   if (status === "success") {
     return (
       <div>
-        <p>Selected items:</p>
+        <p>Current viewport:</p>
         <ul>
           <li>
             X and Y: {result?.x} x {result?.y}

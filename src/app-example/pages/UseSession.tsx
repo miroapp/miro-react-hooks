@@ -1,16 +1,8 @@
-# useSession
+"use client";
 
-Interact with [Miro collaborative sessions](https://developers.miro.com/docs/websdk-reference-session).
-
-**Note**: Make sure you are running this code in a configured [Miro WebSDK app](https://developers.miro.com/docs/build-your-first-hello-world-app). 
-
-## Example
-
-
-```tsx
 import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { useSession } from "@mirohq/websdk-react-hooks";
+import { OnlineUserInfo } from "@mirohq/websdk-types";
+import { useSession } from "../../../esm";
 
 export const UseSession: React.FC = () => {
   const { status, session, start, usersInSession, usersNotInSession } = useSession();
@@ -61,16 +53,3 @@ export const UseSession: React.FC = () => {
     </div>
   );
 };
-
-const App = () => {
-    return (
-        <MiroProvider>
-            <UseSelectedItems />
-        </MiroProvider>
-    )
-};
-
-const container = document.getElementById("root")!;
-const root = createRoot(container);
-root.render(<App />);
-```

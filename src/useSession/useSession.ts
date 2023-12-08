@@ -4,6 +4,7 @@ import {
   Session,
   SessionStartProps,
   SessionsLifecycleEvent,
+  UserSessionEvent,
 } from "@mirohq/websdk-types";
 
 import { useMiro } from "../useMiro/useMiro";
@@ -21,18 +22,6 @@ export const useSession = () => {
   const onlineUsers = useOnlineUsers();
   const miro = useMiro();
 
-  const fetchUsersInSessions = useCallback(async () => {
-    if (!session || onlineUsers.status !== "success") {
-      setUsersInSession([]);
-      return;
-    }
-
-    const usersId = await session.getUsers();
-    const usersInSession = onlineUsers.result.filter((user) => usersId.includes(user.id));
-    setUsersInSession(usersInSession);
-    return;
-  }, [session, onlineUsers.status, onlineUsers.result]);
-
   const start = useCallback(
     async (opts: SessionStartProps) => {
       const session = await miro.board.collaboration.startSession(opts);
@@ -44,22 +33,36 @@ export const useSession = () => {
   );
 
   useEffect(() => {
-    fetchUsersInSessions();
-  }, [fetchUsersInSessions]);
-
-  useEffect(() => {
     if (!session) {
       return;
     }
 
-    session.on("user-joined", fetchUsersInSessions);
-    session.on("user-left", fetchUsersInSessions);
+    const onUserJoined = async (event: UserSessionEvent) => {
+      if (onlineUsers.status !== "success") {
+        return;
+      }
+
+      const { userId } = event;
+      const user = onlineUsers.result.find((user) => user.id === userId);
+
+      if (user) {
+        setUsersInSession((usersInSession) => [...usersInSession, user]);
+      }
+    };
+
+    const onUserLeft = async (event: UserSessionEvent) => {
+      const { userId } = event;
+      setUsersInSession((usersInSession) => usersInSession.filter((user) => user.id !== userId));
+    };
+
+    session.on("user-joined", onUserJoined);
+    session.on("user-left", onUserLeft);
 
     return () => {
-      session.off("user-joined", fetchUsersInSessions);
-      session.off("user-left", fetchUsersInSessions);
+      session.off("user-joined", onUserJoined);
+      session.off("user-left", onUserLeft);
     };
-  }, [session, fetchUsersInSessions]);
+  }, [session, onlineUsers.status, onlineUsers.result]);
 
   useEffect(() => {
     const setSessionEnded = (sessionEvent: SessionsLifecycleEvent) => {
@@ -84,8 +87,6 @@ export const useSession = () => {
       usersInSession.every((userInSession) => user.id !== userInSession.id),
     );
   }, [onlineUsers.status, onlineUsers.result, usersInSession]);
-
-  console.log({ status, session, usersInSession, usersNotInSession });
 
   return {
     status,
