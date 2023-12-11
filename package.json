@@ -14,7 +14,7 @@
   },
   "type": "module",
   "types": "lib/index.d.ts",
-  "typings": "lib/indeqx.d.ts",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "start": "jest --watchAll --silent --coverage",
     "app": "yarn build && vite",
@@ -33,6 +33,7 @@
     "clean": "rimraf lib esm",
     "release": "commit-and-tag-version --no-verify"
   },
+  "license": "BSD-3-Clause",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
