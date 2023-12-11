@@ -32,11 +32,22 @@ Make sure you have a [Miro application](https://developers.miro.com/docs/build-y
 
 ### Isomorphic or not?
 
-The [Miro WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction) is **NOT** isomorphic, meaning that you cannot use it in both server and client environments. This also applies to this library, it won't work you are rendereing your React components in the server.
+The [Miro WebSDK](https://developers.miro.com/docs/miro-web-sdk-introduction) is **NOT** isomorphic, meaning that you cannot use it in both server and client environments. This also applies to this library, it won't work wehn you are rendereing your React components in the server.
 
 ### What if I am using Nextjs?
 
-Well, in that case, you can wrap your component in a dynamic code block that will defer the component rendering to only execute in the client-side:
+#### Using app router
+Just make sure that the component that uses the hooks is only rendered on the client by using the `use client` directive on top of your component.
+```tsx
+'use client'
+import { useCurrentUser } from "@mirohq/websdk-react-hooks";
+
+// Your component
+```
+
+
+#### Using pages router
+Wrap your component in a dynamic code block that will defer the component rendering to only execute in the client-side:
 
 ```tsx
 import dynamic from "next/dynamic";
