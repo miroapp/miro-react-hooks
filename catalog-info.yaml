@@ -11,7 +11,7 @@ metadata:
     github.com/project-slug: miroapp/miro-react-hooks
   tags:
     - react
-    - react hooks
+    - react-hooks
     - platform
     - websdk
     - typescript
