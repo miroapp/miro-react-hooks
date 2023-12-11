@@ -1,0 +1,24 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+
+metadata:
+  name: miro-websdk-react-hooks
+  title: Miro WebSDK React hooks
+  description: Collection of React Hooks wrappers for Miro WebSDK
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: miroapp/miro-react-hooks
+  tags: []
+  links: []
+
+spec:
+  type: library
+  owner: developer-platform-web-sdk
+  criticality: low
+  lifecycle: production
+  dependsOn:
+    - component:platform-internal-sdk-v2
+  operations:
+    region: eu
+    support: full
