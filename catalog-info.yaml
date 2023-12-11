@@ -9,8 +9,16 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.
     github.com/project-slug: miroapp/miro-react-hooks
-  tags: []
-  links: []
+  tags:
+    - react
+    - react hooks
+    - platform
+    - websdk
+    - typescript
+  links:
+    - url: https://www.npmjs.com/package/@mirohq/websdk-react-hooks
+      title: Library entrypoint in Npmjs
+      type: docs
 
 spec:
   type: library
