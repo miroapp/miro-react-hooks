@@ -24,6 +24,7 @@ spec:
   type: library
   owner: developer-platform-web-sdk
   criticality: low
+  capability: web-sdk
   lifecycle: production
   dependsOn:
     - component:platform-internal-sdk-v2
