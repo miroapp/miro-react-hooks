@@ -22,7 +22,7 @@ metadata:
 
 spec:
   type: library
-  owner: developer-platform-web-sdk
+  owner: app-frameworks
   criticality: low
   capability: web-sdk
   lifecycle: production
