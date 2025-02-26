@@ -22,7 +22,7 @@ metadata:
 
 spec:
   type: library
-  owner: app-frameworks
+  owner: group:layout-architecture
   criticality: low
   capability: web-sdk
   lifecycle: production
