@@ -22,7 +22,7 @@ metadata:
 
 spec:
   type: library
-  owner: group:layout-architecture
+  owner: group:dev-ecosystem
   criticality: low
   capability: web-sdk
   lifecycle: production
